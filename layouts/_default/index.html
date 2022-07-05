@@ -34,7 +34,7 @@
 <div class="container">
     <section>
         <h2>
-            Latest Articles
+            近期文章
             {{ range $archivesPage }}
             <a class="section-button" href="{{ .RelPermalink }}">View all</a>
             {{ end }}
@@ -55,7 +55,7 @@
     </section>
     {{ if gt (len $projects) 0}}
     <section>
-        <h2>Projects</h2>
+        <h2>个人项目</h2>
         <div class="projects">
             {{ range $projects.ByWeight }}
             <div class="project">
