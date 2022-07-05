@@ -66,9 +66,11 @@
                     </a>
                     <div class="description">{{ .Params.description }}</div>
                 </div>
+                {{ if .Params.repo }}
                 <div class="flex">
                     <a href="{{ .Params.repo }}" class="button" target="_blank" rel="noreferrer">Source</a>
                 </div>
+                {{ end }}
             </div>
             {{ end }}
         </div>
