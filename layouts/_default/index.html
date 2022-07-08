@@ -36,7 +36,7 @@
         <h2>
             近期文章
             {{ range $archivesPage }}
-            <a class="section-button" href="{{ .RelPermalink }}">View all</a>
+            <a class="section-button" href="{{ .RelPermalink }}">查看更多</a>
             {{ end }}
         </h2>
         <div class="posts">
@@ -44,7 +44,7 @@
             <div class="post">
                 <a href="{{ .RelPermalink }}">
                     <div class="post-row">
-                        <time>{{ .Date.Format "Jan 02" }}</time>
+                        <time>{{ .Date.Format "1月02日" }}</time>
                         <h3>{{ .Title }}</h3>
                     </div>
                     <!--<div class="new-post">New!</div>-->
