@@ -6,6 +6,8 @@
     <meta name="theme-color" content="dark">
     <title>{{with.Title}}{{.}} | {{end}}{{.Site.Title}}</title>
 
+    {{ with .Keywords }}<meta name="keywords" content="{{ range $i, $e := . }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}">{{ end }}
+
     {{ template "_internal/google_analytics.html" . }}
     {{ template "_internal/google_analytics_async.html" . }}
     
