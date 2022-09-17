@@ -61,31 +61,19 @@
             <div class="project">
                 <div>
                     <a href="{{ .Params.link }}" target="_blank" rel="noreferrer">
-                        <div style="
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    object-fit: cover;
-    margin-right: 15px;
-                        ">
-                            <!-- {{ .Params.icon }} -->
-                            <img src="1111.jpeg" />
+                        {{ if .Params.pic }}
+                        <div class="left">
+                            <img src="{{ .Params.pic }}" />
                         </div>
-                        <div style="
-flex: 1 1 0%;
-    min-width: 0px;
-    display: flex;
-    flex-flow: column nowrap;
-    -webkit-box-pack: center;
-    justify-content: center;
-                        ">
+                        {{ else if .Params.icon }}
+                        <div class="icon">{{ .Params.icon }}</div>
+                        {{ end }}
+                        <div class="right">
                             <h3>{{ .Title }}</h3>
-                            <div class="description" style="font-size: 14px">2022~2014，不再维护</div>
+                            <div class="description" style="font-size: 14px">{{ .Params.description }}</div>
                         </div>
                     </a>
-                    <div class="description">{{ .Params.description }}{{ .Content }}</div>
+                    <div class="description">{{ .Content }}</div>
                 </div>
                 {{ if .Params.repo }}
                 <div class="flex">
