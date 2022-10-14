@@ -28,7 +28,7 @@
             <section>
                 <h2>{{ .Key }}</h2>
                 <div class="posts">
-                    {{ range .Pages }}
+                    {{ range .Pages.ByWeight }}
                     <div class="project">
                         <div>
                             <a href="{{ .Params.link }}" target="_blank" rel="noreferrer">
