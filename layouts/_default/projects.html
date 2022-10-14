@@ -1,0 +1,66 @@
+{{ define "main" }}
+
+<header>
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        <p class="subtitle">{{ .Params.subtitle }}</p>
+    </div>
+</header>
+
+{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.projectSections }}
+
+<section>
+    <div class="container">
+        <div class="filter-container">
+          {{ $maxCategoryToShow := $.Site.Params.maxCategoryToShow | default 5 }}
+          {{ range .Site.Taxonomies.categories.TaxonomyArray | first $maxCategoryToShow }}
+            <div class="filter-item" data-value="{{ .Page.Title }}" data-type="categories">
+              {{ .Page.Title }}<sup>{{ .Count }}</sup>
+            </div>
+          {{ end }}
+        </div>
+        <input id="search-query" type="search" placeholder="随意搜索...">
+        
+        <div id="search-results">
+        </div>
+        <section id="articles-list">
+            {{ range $pages.GroupByDate "2006" }}
+            <section>
+                <h2>{{ .Key }}</h2>
+                <div class="posts">
+                    {{ range .Pages }}
+                    <div class="project">
+                        <div>
+                            <a name="{{ .File.BaseFileName }}" />
+                            <a href="{{ .Params.link }}" target="_blank" rel="noreferrer">
+                                {{ if .Params.pic }}
+                                <div class="left">
+                                    <img src="/{{ .Params.pic }}" />
+                                </div>
+                                {{ else if .Params.icon }}
+                                <div class="icon">{{ .Params.icon }}</div>
+                                {{ end }}
+                                <div class="right">
+                                    <h3>{{ .Title }}</h3>
+                                    <div class="description" style="font-size: 14px">{{ .Params.description }}</div>
+                                </div>
+                            </a>
+                            <div class="description">{{ .Content }}</div>
+                        </div>
+                        <div class="flex">
+                            <a href="{{ .Params.link }}" class="button" target="_blank" rel="noreferrer" style="background: none; color: var(--link-color)">Open</a>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </section>
+            {{ end }}
+        </section>
+    </div>
+</section>
+
+{{- $opts := dict "minify" hugo.IsProduction -}}
+{{ $search := resources.Get "ts/search.ts" | js.Build $opts | fingerprint }}
+<script async src="{{ $search.RelPermalink }}"></script>
+
+{{ end }}

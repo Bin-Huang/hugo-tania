@@ -60,7 +60,7 @@
             {{ range $projects.ByWeight }}
             <div class="project">
                 <div>
-                    <a href="{{ .Params.link }}" target="_blank" rel="noreferrer">
+                    <a href="/projects#{{ .File.BaseFileName }}" rel="noreferrer">
                         {{ if .Params.pic }}
                         <div class="left">
                             <img src="{{ .Params.pic }}" />
@@ -70,10 +70,13 @@
                         {{ end }}
                         <div class="right">
                             <h3>{{ .Title }}</h3>
-                            <div class="description" style="font-size: 14px">{{ .Params.description }}</div>
+                            {{ if .Params.summary }}
+                            <div class="description" style="font-size: 14px">{{ .Params.summary }}</div>
+                            {{ else }}
+                            <div class="description" style="font-size: 14px">{{ .Plain }}</div>
+                            {{ end }}
                         </div>
                     </a>
-                    <div class="description">{{ .Content }}</div>
                 </div>
                 {{ if .Params.repo }}
                 <div class="flex">
