@@ -55,9 +55,13 @@
     </section>
     {{ if gt (len $projects) 0}}
     <section>
-        <h2>我的作品</h2>
+        <h2>
+            作品
+            <a class="section-button" href="/projects">查看更多</a>
+        </h2>
         <div class="projects">
             {{ range $projects.ByWeight }}
+            {{ if .Params.mark }}
             <div class="project">
                 <div>
                     <a href="/projects#{{ .File.BaseFileName }}" rel="noreferrer">
@@ -84,6 +88,7 @@
                 </div>
                 {{ end }}
             </div>
+            {{ end }}
             {{ end }}
         </div>
     </section>
