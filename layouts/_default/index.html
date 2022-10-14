@@ -59,7 +59,7 @@
             {{ if .Params.mark }}
             <div class="project">
                 <div>
-                    <a href="/projects#{{ .File.BaseFileName }}" rel="noreferrer">
+                    <a href="{{ .Params.link }}" target="_blank" rel="noreferrer">
                         {{ if .Params.pic }}
                         <div class="left">
                             <img src="{{ .Params.pic }}" />

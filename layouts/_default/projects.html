@@ -31,7 +31,6 @@
                     {{ range .Pages }}
                     <div class="project">
                         <div>
-                            <a name="{{ .File.BaseFileName }}" />
                             <a href="{{ .Params.link }}" target="_blank" rel="noreferrer">
                                 {{ if .Params.pic }}
                                 <div class="left">
@@ -46,9 +45,6 @@
                                 </div>
                             </a>
                             <div class="description">{{ .Content }}</div>
-                        </div>
-                        <div class="flex">
-                            <a href="{{ .Params.link }}" class="button" target="_blank" rel="noreferrer" style="background: none; color: var(--link-color)">Open</a>
                         </div>
                     </div>
                     {{ end }}
